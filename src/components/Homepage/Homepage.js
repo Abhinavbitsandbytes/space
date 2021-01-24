@@ -3,6 +3,7 @@ import axios from "axios";
 import styles from "./Homepage.module.css";
 import Filter from "../Filter/Filter";
 import Cards from "../Cards/Cards";
+import makeApiCall from '../Api/api'
 
 const BASE_URL = "https://api.spaceXdata.com/v3/launches?limit=100"
 
@@ -13,25 +14,20 @@ class Homepage extends React.Component {
   };
   componentDidMount() {
       this.setState({isLoading:true})
-      this.makeApiCall(BASE_URL)
+      this.makeApiComponent(BASE_URL)
   }
   componentDidUpdate(prevProps) {
     if (this.props.location.search !== prevProps.location.search) {
-        this.makeApiCall(`${BASE_URL}&${this.props.location.search.substring(1)}`)
+        this.makeApiComponent(`${BASE_URL}&${this.props.location.search.substring(1)}`)
     }  
   }
 
-  makeApiCall =(url) => {
-    axios
-    .get(url)
-    .then((res) => {
-      this.setState({ missionData: res.data, isLoading:false });
-    }).catch(e => {
-      alert('Something went wrong');
-      this.setState({isLoading:false})
-    });
 
-  }
+  makeApiComponent = async (url) => {
+  
+    let result = await makeApiCall(url);
+    console.log('re', result)
+}
 
   handleFilterChange=(querry) =>{
     this.props.history.push({

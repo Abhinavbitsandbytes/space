@@ -25,9 +25,31 @@
     font-weight: 600;
     margin-bottom: 10px;
 }
+.card_bottom_content p{
+    margin: 0px;
+}
 .mission_ids_list{
     margin: 0px;
 }
+.title_value{
+    color: blue;
+    margin-left: 4px;
+}
+.card_content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+.mission_ids_list li {
+    padding-left: 1em; 
+    text-indent: -.7em;
+  }
+  
+.mission_ids_list li::before {
+    content: "• ";
+    color: blue; 
+  }
 
 @media screen and (min-width: 1025px) and (max-width: 1440px) { 
     .card_content{

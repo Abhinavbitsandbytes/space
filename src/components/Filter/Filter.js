@@ -2,10 +2,7 @@ import React from 'react'
 import styles from './Filter.module.css'
 import filtersData from '../../data/filter.json'
 const queryString = require('query-string');
-
 class Filter extends React.Component{
-
-
     handleFilterClick = (filterType, filterKey) => {
         let parsed = queryString.parse(this.props.history.location.search);
         if(parsed[filterType]){
@@ -20,7 +17,6 @@ parsed[filterType]=filterKey
         }
 let str = ""
         for (const property in parsed) {
-            // if(property!=='')
             str = str + `${property}=${parsed[property]}&`
           }
           var pos = str.lastIndexOf('&');

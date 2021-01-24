@@ -13,14 +13,45 @@ class Cards extends React.Component{
                   <img className={styles.card_image} src={links.mission_patch_small} alt=""></img>
               </div>
               <p className={styles.mission_name_id}>{`${mission_name?mission_name:''} #${flight_number?flight_number:''}`}</p>
-              <span>Mission ids:</span>
+              <b>Mission ids:</b>
               {<ul className={styles.mission_ids_list}>
                   {mission_id && mission_id.length>0 && mission_id.map((id)=>{
                       return(<li>{id}</li>)
                   })}</ul>}
-              <div>{`Launch Year: ${launch_year?launch_year:''}`}</div>
-              <div>{`Successful Launch: ${launch_success}`}</div>
-              <div>{`Successful Landing: ${launch_landing}`}</div>
+                  <div className={styles.card_bottom_content}>
+              <div>
+                    <p>
+                      <b>Launch Year:</b>
+                      <span className={styles.title_value}>
+                        {launch_year ? launch_year : ''}
+                      </span>
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <b>Launch Year:</b>
+                      <span className={styles.title_value}>
+                        {launch_year ? launch_year : ''}
+                      </span>
+                    </p>
+                  </div>           
+                  <div>
+                    <p>
+                      <b>Successful Launch:</b>
+                      <span className={styles.title_value}>
+                        {`${launch_success}`}
+                      </span>
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <b>Successful Landing:</b>
+                      <span className={styles.title_value}>
+                        {`${launch_landing==='undefined'?'':launch_landing}`}
+                      </span>
+                    </p>
+                  </div>
+                  </div>
 </div>
             </>
     )
