@@ -1,12 +1,12 @@
 import React from 'react';
-import axios from 'axios';
 import styles from './Homepage.module.css';
 import Filter from '../Filter/Filter';
 import Cards from '../Cards/Cards';
 import makeApiCall from '../Api/api';
-
 const BASE_URL = 'https://api.spaceXdata.com/v3/launches?limit=100';
-
+const LOADER_MSG = "Loading..."
+const NO_DATA_MSG = "No Data Found..."
+const DEVELOPER = "Abhinav"
 class Homepage extends React.Component {
   state = {
     missionData: [],
@@ -14,20 +14,20 @@ class Homepage extends React.Component {
   };
   componentDidMount() {
     this.setState({ isLoading: true });
-    this.makeApiComponent(BASE_URL);
+    this.getData(BASE_URL);
   }
   componentDidUpdate(prevProps) {
     if (this.props.location.search !== prevProps.location.search) {
-      this.makeApiComponent(
+      this.getData(
         `${BASE_URL}&${this.props.location.search.substring(1)}`
       );
     }
   }
 
-  makeApiComponent = async (url) => {
+  getData = async (url) => {
+      this.setState({isLoading:true})
     let result = await makeApiCall(url);
     this.setState({ missionData: result, isLoading: false });
-    console.log('re', result);
   };
 
   handleFilterChange = (querry) => {
@@ -37,9 +37,9 @@ class Homepage extends React.Component {
   };
 
   render() {
-    const { missionData } = this.state;
+    const { missionData, isLoading } = this.state;
     return (
-      <div>
+      <React.Fragment>
         <div className={styles.homepage_main_content}>
           <h2>SpaceX Launch Programs</h2>
           <div className={styles.filter_and_cards}>
@@ -49,17 +49,17 @@ class Homepage extends React.Component {
               }}
               history={this.props.history}
             ></Filter>
-            <div className={styles.cards_section}>
-              {missionData && missionData.length > 0 && (
-                <Cards missionData={missionData}></Cards>
-              )}
-            </div>
+            {isLoading ? (<div>{LOADER_MSG}</div>) : (  <div className={styles.cards_section}>
+                {(missionData && missionData.length > 0) ? (
+                  <Cards missionData={missionData}></Cards>
+                ) : (<p>{NO_DATA_MSG}</p>)}
+              </div>)}
           </div>
         </div>
         <footer className={styles.footer_section}>
-          <p>Developed By : Abhinav</p>
+          <p>Developed By : {DEVELOPER}</p>
         </footer>
-      </div>
+      </React.Fragment>
     );
   }
 }

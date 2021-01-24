@@ -35,19 +35,11 @@ class Cards extends React.Component {
                         {mission_id &&
                           mission_id.length > 0 &&
                           mission_id.map((id) => {
-                            return <li>{id}</li>;
+                            return <li key={id}>{id}</li>;
                           })}
                       </ul>
                     }
                     <div className={styles.card_bottom_content}>
-                      <div>
-                        <p>
-                          <b>Launch Year:</b>
-                          <span className={styles.title_value}>
-                            {launch_year ? launch_year : ''}
-                          </span>
-                        </p>
-                      </div>
                       <div>
                         <p>
                           <b>Launch Year:</b>

@@ -24,7 +24,7 @@ let str = ""
           this.props.handleFilterChange(str) 
       };
       getSelectedBackgroundColor = (filterType, filterKey) =>{
-        let parsed = queryString.parse(this.props.history.location.search);
+        const parsed = queryString.parse(this.props.history.location.search);
         for (const property in parsed) {
             if( property===filterType && parsed[property]===filterKey){
                     return{
@@ -41,17 +41,19 @@ let str = ""
     {filtersData.data.map(filter => {
         const filterType=filter.type
         return (
-            <div>
+            <React.Fragment key={filterType}>
                  <div className={styles.filter_type_title}>{filter.title}</div>
     <div className={styles.border_bottom}></div>
     <div className={styles.launch_year_filter_section}>     
           {filter.filters.map(filter => {
               return (
+                  <React.Fragment key={filter.key}>
               <button style={this.getSelectedBackgroundColor(filterType, filter.key)} onClick={()=>{this.handleFilterClick(filterType, filter.key)}}>{filter.value}</button> 
+              </React.Fragment>
               )
           })  }
             </div>
-            </div>
+            </React.Fragment>
         )
     })}           
 </div>
