@@ -1,39 +1,40 @@
-import React from "react";
-import axios from "axios";
-import styles from "./Homepage.module.css";
-import Filter from "../Filter/Filter";
-import Cards from "../Cards/Cards";
-import makeApiCall from '../Api/api'
+import React from 'react';
+import axios from 'axios';
+import styles from './Homepage.module.css';
+import Filter from '../Filter/Filter';
+import Cards from '../Cards/Cards';
+import makeApiCall from '../Api/api';
 
-const BASE_URL = "https://api.spaceXdata.com/v3/launches?limit=100"
+const BASE_URL = 'https://api.spaceXdata.com/v3/launches?limit=100';
 
 class Homepage extends React.Component {
   state = {
     missionData: [],
-    isLoading:false
+    isLoading: false,
   };
   componentDidMount() {
-      this.setState({isLoading:true})
-      this.makeApiComponent(BASE_URL)
+    this.setState({ isLoading: true });
+    this.makeApiComponent(BASE_URL);
   }
   componentDidUpdate(prevProps) {
     if (this.props.location.search !== prevProps.location.search) {
-        this.makeApiComponent(`${BASE_URL}&${this.props.location.search.substring(1)}`)
-    }  
+      this.makeApiComponent(
+        `${BASE_URL}&${this.props.location.search.substring(1)}`
+      );
+    }
   }
 
-
   makeApiComponent = async (url) => {
-  
     let result = await makeApiCall(url);
-    console.log('re', result)
-}
+    this.setState({ missionData: result, isLoading: false });
+    console.log('re', result);
+  };
 
-  handleFilterChange=(querry) =>{
+  handleFilterChange = (querry) => {
     this.props.history.push({
-        search: querry,
-      });
-    }
+      search: querry,
+    });
+  };
 
   render() {
     const { missionData } = this.state;
@@ -42,7 +43,12 @@ class Homepage extends React.Component {
         <div className={styles.homepage_main_content}>
           <h2>SpaceX Launch Programs</h2>
           <div className={styles.filter_and_cards}>
-            <Filter handleFilterChange={(querry)=>{this.handleFilterChange(querry)}} history={this.props.history}></Filter>
+            <Filter
+              handleFilterChange={(querry) => {
+                this.handleFilterChange(querry);
+              }}
+              history={this.props.history}
+            ></Filter>
             <div className={styles.cards_section}>
               {missionData && missionData.length > 0 && (
                 <Cards missionData={missionData}></Cards>
