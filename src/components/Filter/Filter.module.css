@@ -1,0 +1,44 @@
+.filter_container {
+  background: #ffffff;
+  padding: 10px;
+  height: fit-content;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+.filter_container h4{
+    margin: 0px;
+}
+.launch_year_filter_section button {
+  width: 40%;
+  height: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background: #7feb7f;
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  .filter_container {
+    width: 20%;
+    margin-right: 20px;
+  }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1024px) {
+  .filter_container {
+    width: 40%;
+    margin-right: 20px;
+  }
+}
+.filter_type_title {
+  font-size: 15px;
+  text-align: center;
+}
+.border_bottom {
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+}
+.launch_year_filter_section {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+}

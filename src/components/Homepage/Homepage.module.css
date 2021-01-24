@@ -1,0 +1,56 @@
+.homepage_main_content{
+padding: 10px;
+    
+}
+.homepage_main_content h2 {
+    padding: 0px;
+    margin: 0px;
+    word-break: break-all;
+}
+
+.filter_and_cards{
+    margin-top: 10px;
+}
+
+.cards_section{
+    display: flex;
+    flex-flow: wrap;
+    /* justify-content: center; */
+}
+
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) { 
+    .filter_and_cards{
+        display: flex;
+    }
+    .cards_section{
+        width: 80%;
+        /* justify-content: space-between; */
+    }
+    .card_content{
+        width: 20%;
+    }
+    .card_image{
+        /* width: 150px; */
+    }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1024px) { 
+    .filter_and_cards{
+        display: flex;
+    }
+    .cards_section{
+        width: 80%;
+        /* justify-content: space-between; */
+    }
+    .card_content{
+        width: 40%;
+    }
+}
+
+.footer_section{
+    text-align: center;
+}
+.footer_section p{
+    font-weight: 600;
+}

@@ -1,0 +1,45 @@
+.card_content{
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 12px;
+    height: fit-content;
+    min-height: 320px;
+   
+}
+
+.card_image_section{
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+}
+.card_image {
+    width: 150px;
+}
+.mission_name_id{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #5CACEE;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.mission_ids_list{
+    margin: 0px;
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) { 
+    .card_content{
+        width: 20%;
+        margin-right: 20px;
+    }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1024px) { 
+
+    .card_content{
+        width: 40%;
+        margin-right: 20px;
+    }
+}

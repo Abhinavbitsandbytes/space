@@ -1,10 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+import Homepage from './components/Homepage/Homepage'
+import { Route, Switch, BrowserRouter } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -17,7 +19,17 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
+          <BrowserRouter>
+      <Switch>
+        <Route
+          exact
+          path="/"
+         component={Homepage}
+        />
+      <Homepage></Homepage>
+      </Switch>
+      </BrowserRouter>
     </div>
   );
 }
