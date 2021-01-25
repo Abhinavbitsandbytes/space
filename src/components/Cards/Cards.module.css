@@ -9,18 +9,22 @@
 }
 
 .card_image_section{
-    background-color: lightblue;
+    background-color: #F2F2F2;
     display: flex;
     justify-content: center;
 }
 .card_image {
+    /* width: 150px; */
     width: 150px;
+    width: -moz-available;         
+    width: -webkit-fill-available; 
+    width: fill-available;
 }
 .mission_name_id{
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    color: #5CACEE;
+    color: #606491;
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -31,7 +35,7 @@
     margin: 0px;
 }
 .title_value{
-    color: blue;
+    color: #606491;
     margin-left: 4px;
 }
 .card_content ul {
@@ -47,7 +51,7 @@
   
 .mission_ids_list li::before {
     content: "• ";
-    color: blue; 
+    color: #606491; 
   }
 
 @media screen and (min-width: 1025px) and (max-width: 1440px) { 

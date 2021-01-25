@@ -2,9 +2,9 @@ import React from 'react'
 import styles from './Filter.module.css'
 import filtersData from '../../data/filter.json'
 const queryString = require('query-string');
-class Filter extends React.Component{
-    handleFilterClick = (filterType, filterKey) => {
-        let parsed = queryString.parse(this.props.history.location.search);
+const Filter = (props) => {
+ const   handleFilterClick = (filterType, filterKey) => {
+        let parsed = queryString.parse(props.history.location.search);
         if(parsed[filterType]){
             if(parsed[filterType]===filterKey){
                 delete parsed[filterType]
@@ -21,19 +21,19 @@ let str = ""
           }
           var pos = str.lastIndexOf('&');
           str = str.substring(0,pos) + '' + str.substring(pos+1)
-          this.props.handleFilterChange(str) 
+          props.handleFilterChange(str) 
       };
-      getSelectedBackgroundColor = (filterType, filterKey) =>{
-        const parsed = queryString.parse(this.props.history.location.search);
+   const   getSelectedBackgroundColor = (filterType, filterKey) =>{
+        const parsed = queryString.parse(props.history.location.search);
         for (const property in parsed) {
             if( property===filterType && parsed[property]===filterKey){
                     return{
-                        backgroundColor:'chartreuse'
+                        backgroundColor:'#7DB70A'
                     }
             }   
           }
       }
-    render(){
+    
         return(
         <>
         <div className={styles.filter_container}>
@@ -48,7 +48,7 @@ let str = ""
           {filter.filters.map(filter => {
               return (
                   <React.Fragment key={filter.key}>
-              <button style={this.getSelectedBackgroundColor(filterType, filter.key)} onClick={()=>{this.handleFilterClick(filterType, filter.key)}}>{filter.value}</button> 
+              <button style={getSelectedBackgroundColor(filterType, filter.key)} onClick={()=>{handleFilterClick(filterType, filter.key)}}>{filter.value}</button> 
               </React.Fragment>
               )
           })  }
@@ -60,6 +60,6 @@ let str = ""
         </>
         )
     }
-}
+
 
 export default Filter

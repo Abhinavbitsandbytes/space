@@ -5,7 +5,7 @@ const makeApiCall = async (url) => {
     let res = await axios.get(url);
     return res.data;
   } catch (error) {
-    return 'error';
+    return 'Something went wrong';
   }
 };
 

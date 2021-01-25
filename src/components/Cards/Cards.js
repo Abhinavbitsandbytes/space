@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './Cards.module.css';
 
-class Cards extends React.Component {
-  render() {
+const Cards = (props) => {
+
     return (
       <>
-        {this.props.missionData &&
-          this.props.missionData.map(
+        {props.missionData &&
+          props.missionData.map(
             ({
               links,
               mission_name,
@@ -74,6 +74,6 @@ class Cards extends React.Component {
           )}
       </>
     );
-  }
+
 }
 export default Cards;

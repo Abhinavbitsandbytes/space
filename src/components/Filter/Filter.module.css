@@ -13,7 +13,12 @@
   height: 30px;
   margin-bottom: 10px;
   cursor: pointer;
-  background: #7feb7f;
+  background: #C3E19B;
+  border: none;
+  border-radius: 4px;
+}
+.launch_year_filter_section button:focus{
+  outline:0 ;
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
@@ -29,6 +34,7 @@
     margin-right: 20px;
   }
 }
+
 .filter_type_title {
   font-size: 15px;
   text-align: center;

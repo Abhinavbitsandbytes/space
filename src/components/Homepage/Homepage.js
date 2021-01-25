@@ -3,6 +3,7 @@ import styles from './Homepage.module.css';
 import Filter from '../Filter/Filter';
 import Cards from '../Cards/Cards';
 import makeApiCall from '../Api/api';
+const queryString = require('query-string');
 const BASE_URL = 'https://api.spaceXdata.com/v3/launches?limit=100';
 const LOADER_MSG = "Loading..."
 const NO_DATA_MSG = "No Data Found..."
@@ -13,8 +14,24 @@ class Homepage extends React.Component {
     isLoading: false,
   };
   componentDidMount() {
+    let parsed = queryString.parse(this.props.history.location.search);
+//     if(parsed[filterType]){
+//         if(parsed[filterType]===filterKey){
+//             delete parsed[filterType]
+//         }
+//         else
+//         parsed[filterType]=filterKey
+//     }
+//     else{
+// parsed[filterType]=filterKey
+//     }
+let querry=''
+if(Object.keys(parsed).length !== 0){
+   querry = `&${Object.keys(parsed).map(key => `${key}=${parsed[key]}`).join("&")}`;
+}
+
     this.setState({ isLoading: true });
-    this.getData(BASE_URL);
+    this.getData(`${BASE_URL}${querry}`);
   }
   componentDidUpdate(prevProps) {
     if (this.props.location.search !== prevProps.location.search) {
@@ -27,7 +44,14 @@ class Homepage extends React.Component {
   getData = async (url) => {
       this.setState({isLoading:true})
     let result = await makeApiCall(url);
-    this.setState({ missionData: result, isLoading: false });
+    if(Array.isArray(result)){
+      this.setState({ missionData: result, isLoading: false });
+    }
+    else{
+      alert(result)
+      this.setState({isLoading: false });
+      return
+    }
   };
 
   handleFilterChange = (querry) => {
