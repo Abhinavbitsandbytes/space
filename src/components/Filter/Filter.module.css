@@ -35,6 +35,15 @@
   }
 }
 
+@media screen and (min-width: 1440px) { 
+  .filter_container {
+    width: 20%;
+    margin-right: 20px;
+  }
+}
+
+
+
 .filter_type_title {
   font-size: 15px;
   text-align: center;
