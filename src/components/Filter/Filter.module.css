@@ -5,8 +5,9 @@
   margin-bottom: 20px;
   border-radius: 4px;
 }
-.filter_container h4{
+.filter_container p{
     margin: 0px;
+    font-weight: 700;
 }
 .launch_year_filter_section button {
   width: 40%;
@@ -21,35 +22,19 @@
   outline:0 ;
 }
 
-@media screen and (min-width: 1025px) and (max-width: 1440px) {
-  .filter_container {
-    width: 20%;
-    margin-right: 20px;
-  }
+.filter_title_section{
+  width: max-content;
+  margin: 0px auto;
 }
-
-@media screen and (min-width: 701px) and (max-width: 1024px) {
-  .filter_container {
-    width: 40%;
-    margin-right: 20px;
-  }
-}
-
-@media screen and (min-width: 1440px) { 
-  .filter_container {
-    width: 20%;
-    margin-right: 20px;
-  }
-}
-
-
 
 .filter_type_title {
   font-size: 15px;
   text-align: center;
+  padding: 0px 20px;
+  color: #606491;
 }
 .border_bottom {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #000;
   margin-bottom: 20px;
 }
 .launch_year_filter_section {
@@ -57,3 +42,25 @@
   flex-flow: wrap;
   justify-content: space-between;
 }
+
+@media screen and (min-width: 701px) and (max-width: 1024px) {
+  .filter_container {
+    width: 40%;
+  }
+}
+
+@media screen and (min-width: 701px) { 
+  .filter_container {
+    margin-right: 20px;
+  }
+}
+
+@media screen and (min-width: 1025px)  {
+  .filter_container {
+    width: 20%;
+    margin-right: 20px;
+  }
+}
+
+
+

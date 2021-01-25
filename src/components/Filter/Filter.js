@@ -3,6 +3,8 @@ import styles from './Filter.module.css'
 import filtersData from '../../data/filter.json'
 const queryString = require('query-string');
 const Filter = (props) => {
+
+
  const   handleFilterClick = (filterType, filterKey) => {
         let parsed = queryString.parse(props.history.location.search);
         if(parsed[filterType]){
@@ -15,15 +17,16 @@ const Filter = (props) => {
         else{
 parsed[filterType]=filterKey
         }
-let str = ""
+let querry = ""
         for (const property in parsed) {
-            str = str + `${property}=${parsed[property]}&`
+            querry = querry + `${property}=${parsed[property]}&`
           }
-          var pos = str.lastIndexOf('&');
-          str = str.substring(0,pos) + '' + str.substring(pos+1)
-          props.handleFilterChange(str) 
+          const pos = querry.lastIndexOf('&');
+          querry = querry.substring(0,pos) + '' + querry.substring(pos+1)
+          props.handleFilterChange(querry) 
       };
-   const   getSelectedBackgroundColor = (filterType, filterKey) =>{
+
+   const getSelectedBackgroundColor = (filterType, filterKey) =>{
         const parsed = queryString.parse(props.history.location.search);
         for (const property in parsed) {
             if( property===filterType && parsed[property]===filterKey){
@@ -37,13 +40,15 @@ let str = ""
         return(
         <>
         <div className={styles.filter_container}>
-    <h4 >Filters</h4>
+    <p >Filters</p>
     {filtersData.data.map(filter => {
         const filterType=filter.type
         return (
             <React.Fragment key={filterType}>
+                <div className={styles.filter_title_section}>
                  <div className={styles.filter_type_title}>{filter.title}</div>
     <div className={styles.border_bottom}></div>
+    </div>
     <div className={styles.launch_year_filter_section}>     
           {filter.filters.map(filter => {
               return (

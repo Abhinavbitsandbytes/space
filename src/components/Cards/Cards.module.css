@@ -5,7 +5,7 @@
     width: 100%;
     margin-bottom: 12px;
     height: fit-content;
-    min-height: 320px;  
+    min-height: 345px;  
 }
 
 .card_image_section{
@@ -54,24 +54,25 @@
     color: #606491; 
   }
 
-@media screen and (min-width: 1025px) and (max-width: 1440px) { 
+  @media screen and (min-width: 701px) { 
     .card_content{
-        width: 20%;
         margin-right: 20px;
     }
 }
 
+@media screen and (min-width: 1025px) and (max-width: 1440px) { 
+    .card_content{
+        width: 19%;
+    }
+}
 @media screen and (min-width: 701px) and (max-width: 1024px) { 
-
     .card_content{
         width: 40%;
-        margin-right: 20px;
     }
 }
 
 @media screen and (min-width: 1440px) { 
     .card_content{
         width: 20%;
-        margin-right: 20px;
     }
 }
